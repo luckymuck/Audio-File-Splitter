@@ -1,14 +1,19 @@
 # Audio File Splitter
 Vinyl &amp; Tape Audio File Splitter is a single-file browser tool for:
-- splitting recordings into individual tracks (using detection methods, a pasted list, or album-based metadata information), 
-- tagging metadata (from MusicBrainz, Discogs, or user) (bpm with detection) (song recognition with third-party connection)
-- exporting as MP3, WAV, or FFmpeg scripts to run locally (instal FFmeg and run the script at the location of the file).
+- splitting recordings into individual tracks using:
+  - detection methods,
+  - a list, or
+  - album-based metadata information;
+- tagging metadata
+  - from MusicBrainz, Discogs, or user information,
+  - bpm detection,
+  - song recognition with third-party connection (Shazam, AcoutID, AudD)
+- exporting as:
+  - Zip of MP3 files,
+  - WAV, or
+  - FFmpeg scripts to run locally.
 
-No installation or upload. 
-Runs in the browser.
-Install FFmpeg to process quickly on local computer.
-Song recognition requires third-party key.
-
+# Use and Features
 ## 1. Add an audio file.
 (MP3, WAV, FLAC, OGG, M4A). 
 
@@ -20,24 +25,24 @@ Song recognition requires third-party key.
 - Optional view of audio signals of energy, bmp, brightness, crowd detection, beat density.
 
 ## 3. Detection.
-### Automated detection using a simple process.
+### A. Detection based upon silence.
 Looks for "silence" of a minimum length below a certain volumn threshold.  Default theshholds based upon album recording type.
-### Automated detection using Multi-Signal Analysis.
-Additional analysis for detecting tracks where typical silence is less reliable.  See below for more details.
-### Apply splits from a manual list.
-Paste a list of tracks and times using one of several formats.
-### Apply splits and metadata based upon information of individual song tracks.
+### B. Detection using Multi-Signal Analysis.
+For live shows or DJ sets additional signal of energy, BMP, color, crowd detection, and beat detection signals may help.
+### C. Apply splits from a manual list.
+Paste a list of tracks and times.  Accepts several formats.
+### D. Apply splits and metadata based upon information of individual song tracks.
 Look-up albums using MusicBrainz or Discogs. (Time results are often off by a few seconds.)
 All metadata search uses the [MusicBrainz](https://musicbrainz.org) public API (CC0 licence). No key required. Requests identify themselves as `VinylSplitter/1.0` per MusicBrainz's usage guidelines.
-### Add BPM metadata to tracks.
+### E. Add BPM metadata to tracks.
 
 ## 4. Identify unknown tracks and add metadata.
 Using your own API key, sending an audio sample to [Shazam via RapidAPI](https://rapidapi.com/apidojo/api/shazam), AcoustID, or [AudD](https://audd.io) 
 
 ## 5. Review and tagging of identified tracts.
-- Ability to manually add track information.  
-- Ability to play each tract.
-- Ability to review each proposed split location and confirm.
+- Manually add track information.  
+- Test play each tract.
+- Review proposed split locations.
 
 ## 6. Export 
 ### Formats
@@ -47,6 +52,16 @@ Using your own API key, sending an audio sample to [Shazam via RapidAPI](https:/
 - **WAV (Lossless)**: Exports each track as a WAV file. Use Mp3tag or Kid3 to add ID3 tags afterwards.
 - **Cue Sheet**: A single .cue file describing all split points — use with your audio player or ripper.
 - **Metadata JSON**: A structured JSON file with all track metadata for use in custom workflows.
+
+  ## Screenshots
+  ### Before a file is added, one column
+<img width="484" height="980" alt="Screenshot1" src="https://github.com/user-attachments/assets/c9469ce4-017e-42de-8513-b8783c583176" />
+
+### File loaded, signal analysis performed, one column
+<img width="498" height="2226" alt="Screenshot3" src="https://github.com/user-attachments/assets/0d14d6b4-b265-4dfa-beee-b8666a1a5ef2" />
+
+### File loaded, signal analysis performed, track detection via Shazam in process, two columns
+<img width="900" height="2000" alt="Screenshot2" src="https://github.com/user-attachments/assets/540cb2e6-29ca-406c-bffe-100262581bda" />
 
 ## Multi-Signal Analysis
 - **Silence / Energy** — Detects track boundaries by finding quiet regions where the audio amplitude drops below a fixed threshold. Gaps with deeper silence and lengths matching the expected inter-track gap score higher; a built-in beat guard suppresses false positives caused by drum solos or sparse sections.
